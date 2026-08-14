@@ -9,6 +9,7 @@ __pycache__/
 *.duckdb
 *.duckdb.wal
 query_benchmarks/**/generated_data/
+query_benchmarks/**/data/
 
 # Operating-system files
 .DS_Store

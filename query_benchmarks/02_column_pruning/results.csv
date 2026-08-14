@@ -1,0 +1,4 @@
+rows,columns_read,runs,median_ms,min_ms,max_ms,parquet_file_size_bytes,duckdb_version,python_version,thread_count,verified
+10000000,1,10,4.502,4.186,5.076,40485901,1.4.5,3.9.6,8,True
+10000000,5,10,15.938,15.208,17.895,40485901,1.4.5,3.9.6,8,True
+10000000,25,10,73.92,72.605,103.702,40485901,1.4.5,3.9.6,8,True

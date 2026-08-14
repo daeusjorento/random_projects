@@ -5,3 +5,4 @@ This directory contains reproducible local experiments investigating what affect
 ## Experiments
 
 1. [`01_row_count`](01_row_count/) — measures how the runtime of `SELECT SUM(value)` changes as a DuckDB table grows from 100,000 to 1,000,000 to 10,000,000 rows.
+2. [`02_column_pruning`](02_column_pruning/) — measures how reading and aggregating 1, 5, or 25 integer columns from the same Parquet file affects DuckDB query performance.

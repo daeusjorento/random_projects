@@ -1,0 +1,123 @@
+┌─────────────────────────────────────┐
+│┌───────────────────────────────────┐│
+││    Query Profiling Information    ││
+│└───────────────────────────────────┘│
+└─────────────────────────────────────┘
+EXPLAIN ANALYZE SELECT SUM(value_01), SUM(value_02), SUM(value_03), SUM(value_04), SUM(value_05), SUM(value_06), SUM(value_07), SUM(value_08), SUM(value_09), SUM(value_10), SUM(value_11), SUM(value_12), SUM(value_13), SUM(value_14), SUM(value_15), SUM(value_16), SUM(value_17), SUM(value_18), SUM(value_19), SUM(value_20), SUM(value_21), SUM(value_22), SUM(value_23), SUM(value_24), SUM(value_25) FROM read_parquet('./data/column_pruning.parquet');
+┌────────────────────────────────────────────────┐
+│┌──────────────────────────────────────────────┐│
+││              Total Time: 0.0738s             ││
+│└──────────────────────────────────────────────┘│
+└────────────────────────────────────────────────┘
+┌───────────────────────────┐
+│           QUERY           │
+└─────────────┬─────────────┘
+┌─────────────┴─────────────┐
+│      EXPLAIN_ANALYZE      │
+│    ────────────────────   │
+│           0 rows          │
+│          (0.00s)          │
+└─────────────┬─────────────┘
+┌─────────────┴─────────────┐
+│    UNGROUPED_AGGREGATE    │
+│    ────────────────────   │
+│        Aggregates:        │
+│          sum(#0)          │
+│          sum(#1)          │
+│          sum(#2)          │
+│          sum(#3)          │
+│          sum(#4)          │
+│          sum(#5)          │
+│          sum(#6)          │
+│          sum(#7)          │
+│          sum(#8)          │
+│          sum(#9)          │
+│          sum(#10)         │
+│          sum(#11)         │
+│          sum(#12)         │
+│          sum(#13)         │
+│          sum(#14)         │
+│          sum(#15)         │
+│          sum(#16)         │
+│          sum(#17)         │
+│          sum(#18)         │
+│          sum(#19)         │
+│          sum(#20)         │
+│          sum(#21)         │
+│          sum(#22)         │
+│          sum(#23)         │
+│          sum(#24)         │
+│                           │
+│           1 row           │
+│          (0.30s)          │
+└─────────────┬─────────────┘
+┌─────────────┴─────────────┐
+│         PROJECTION        │
+│    ────────────────────   │
+│          value_01         │
+│          value_02         │
+│          value_03         │
+│          value_04         │
+│          value_05         │
+│          value_06         │
+│          value_07         │
+│          value_08         │
+│          value_09         │
+│          value_10         │
+│          value_11         │
+│          value_12         │
+│          value_13         │
+│          value_14         │
+│          value_15         │
+│          value_16         │
+│          value_17         │
+│          value_18         │
+│          value_19         │
+│          value_20         │
+│          value_21         │
+│          value_22         │
+│          value_23         │
+│          value_24         │
+│          value_25         │
+│                           │
+│      10,000,000 rows      │
+│          (0.00s)          │
+└─────────────┬─────────────┘
+┌─────────────┴─────────────┐
+│         TABLE_SCAN        │
+│    ────────────────────   │
+│         Function:         │
+│        READ_PARQUET       │
+│                           │
+│        Projections:       │
+│          value_01         │
+│          value_02         │
+│          value_03         │
+│          value_04         │
+│          value_05         │
+│          value_06         │
+│          value_07         │
+│          value_08         │
+│          value_09         │
+│          value_10         │
+│          value_11         │
+│          value_12         │
+│          value_13         │
+│          value_14         │
+│          value_15         │
+│          value_16         │
+│          value_17         │
+│          value_18         │
+│          value_19         │
+│          value_20         │
+│          value_21         │
+│          value_22         │
+│          value_23         │
+│          value_24         │
+│          value_25         │
+│                           │
+│    Total Files Read: 1    │
+│                           │
+│      10,000,000 rows      │
+│          (0.24s)          │
+└───────────────────────────┘
