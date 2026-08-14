@@ -8,3 +8,4 @@ This directory contains reproducible local experiments investigating what affect
 2. [`02_column_pruning`](02_column_pruning/) — measures how reading and aggregating 1, 5, or 25 integer columns from the same Parquet file affects DuckDB query performance.
 3. [`03_physical_organization`](03_physical_organization/) — measures how date-sorted and deterministically randomized Parquet layouts affect row-group eligibility and filtered-query runtime.
 4. [`04_join_cardinality`](04_join_cardinality/) — measures how one versus five dimension matches per key changes join output cardinality and runtime.
+5. [`05_incremental_build`](05_incremental_build/) — compares rebuilding an append-only target with appending only one new date.

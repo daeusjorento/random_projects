@@ -1,0 +1,3 @@
+variant,historical_rows,new_rows,rows_processed,rows_written,final_target_rows,runs,median_ms,min_ms,max_ms,duckdb_version,python_version,thread_count,verified
+full_rebuild,10000000,100000,10100000,10100000,10100000,10,88.228,87.09,91.302,1.4.5,3.9.6,8,True
+incremental_append,10000000,100000,100000,100000,10100000,10,2.386,2.284,2.506,1.4.5,3.9.6,8,True
