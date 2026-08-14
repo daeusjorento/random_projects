@@ -1,0 +1,4 @@
+table_name,row_count,median_ms,min_ms,max_ms,result,expected_result,verified,measured_runs,duckdb_version,python_version,platform,machine,processor,cpu_count,memory_bytes
+rows_100000,100000,0.176,0.164,0.222,49950000,49950000,True,10,1.4.5,3.9.6,macOS-26.5.2-arm64-arm-64bit,arm64,arm,8,17179869184
+rows_1000000,1000000,0.431,0.408,0.486,499500000,499500000,True,10,1.4.5,3.9.6,macOS-26.5.2-arm64-arm-64bit,arm64,arm,8,17179869184
+rows_10000000,10000000,2.494,2.371,2.965,4995000000,4995000000,True,10,1.4.5,3.9.6,macOS-26.5.2-arm64-arm-64bit,arm64,arm,8,17179869184

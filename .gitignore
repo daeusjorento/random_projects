@@ -1,0 +1,15 @@
+# Python environments and caches
+.venv/
+venv/
+__pycache__/
+*.py[cod]
+.pytest_cache/
+
+# Local DuckDB files and generated benchmark data
+*.duckdb
+*.duckdb.wal
+query_benchmarks/**/generated_data/
+
+# Operating-system files
+.DS_Store
+Thumbs.db
