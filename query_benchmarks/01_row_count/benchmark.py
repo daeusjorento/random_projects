@@ -1,6 +1,7 @@
 import csv
 import os
 import platform
+import shutil
 import statistics
 import tempfile
 import time
@@ -8,8 +9,9 @@ import time
 import duckdb
 
 
-ROW_COUNTS = (100_000, 1_000_000, 10_000_000)
+ROW_COUNTS = (100_000, 1_000_000, 10_000_000, 30_000_000, 100_000_000)
 MEASURED_RUNS = 10
+MIN_FREE_DISK_BYTES = 10 * 1024**3
 
 
 def expected_sum(row_count):
@@ -41,7 +43,15 @@ def main():
         connection = duckdb.connect(database_path)
 
         for row_count in ROW_COUNTS:
+            free_disk_bytes = shutil.disk_usage(temp_dir).free
+            if free_disk_bytes < MIN_FREE_DISK_BYTES:
+                raise RuntimeError(
+                    f"Only {free_disk_bytes / 1024**3:.1f} GiB of disk space remains; "
+                    "stopping before creating another table."
+                )
+
             table_name = f"rows_{row_count}"
+            create_start = time.perf_counter_ns()
             connection.execute(
                 f"""
                 CREATE TABLE {table_name} AS
@@ -52,6 +62,7 @@ def main():
                 FROM range({row_count})
                 """
             )
+            create_ms = (time.perf_counter_ns() - create_start) / 1_000_000
 
             query = f"SELECT SUM(value) FROM {table_name};"
             expected = float(expected_sum(row_count))
@@ -81,6 +92,7 @@ def main():
                 "median_ms": round(statistics.median(timings_ms), 3),
                 "min_ms": round(min(timings_ms), 3),
                 "max_ms": round(max(timings_ms), 3),
+                "create_ms": round(create_ms, 3),
                 "result": int(expected),
                 "expected_result": int(expected),
                 "verified": True,
@@ -91,14 +103,18 @@ def main():
             print(
                 f"{table_name}: median={result['median_ms']:.3f} ms, "
                 f"min={result['min_ms']:.3f} ms, max={result['max_ms']:.3f} ms, "
+                f"created={result['create_ms']:.3f} ms, "
                 f"result={result['result']} (verified)"
             )
+            connection.execute(f"DROP TABLE {table_name}")
 
         connection.close()
 
     output_path = os.path.join(os.path.dirname(os.path.abspath(__file__)), "results.csv")
     with open(output_path, "w", newline="", encoding="utf-8") as output_file:
-        writer = csv.DictWriter(output_file, fieldnames=results[0].keys())
+        writer = csv.DictWriter(
+            output_file, fieldnames=results[0].keys(), lineterminator="\n"
+        )
         writer.writeheader()
         writer.writerows(results)
 

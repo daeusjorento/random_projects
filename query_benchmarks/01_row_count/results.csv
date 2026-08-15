@@ -1,4 +1,6 @@
-table_name,row_count,median_ms,min_ms,max_ms,result,expected_result,verified,measured_runs,duckdb_version,python_version,platform,machine,processor,cpu_count,memory_bytes
-rows_100000,100000,0.176,0.164,0.222,49950000,49950000,True,10,1.4.5,3.9.6,macOS-26.5.2-arm64-arm-64bit,arm64,arm,8,17179869184
-rows_1000000,1000000,0.431,0.408,0.486,499500000,499500000,True,10,1.4.5,3.9.6,macOS-26.5.2-arm64-arm-64bit,arm64,arm,8,17179869184
-rows_10000000,10000000,2.494,2.371,2.965,4995000000,4995000000,True,10,1.4.5,3.9.6,macOS-26.5.2-arm64-arm-64bit,arm64,arm,8,17179869184
+table_name,row_count,median_ms,min_ms,max_ms,create_ms,result,expected_result,verified,measured_runs,duckdb_version,python_version,platform,machine,processor,cpu_count,memory_bytes
+rows_100000,100000,0.191,0.179,0.272,4.692,49950000,49950000,True,10,1.4.5,3.9.6,macOS-26.5.2-arm64-arm-64bit,arm64,arm,8,17179869184
+rows_1000000,1000000,0.427,0.41,0.514,40.719,499500000,499500000,True,10,1.4.5,3.9.6,macOS-26.5.2-arm64-arm-64bit,arm64,arm,8,17179869184
+rows_10000000,10000000,2.433,2.375,2.652,369.926,4995000000,4995000000,True,10,1.4.5,3.9.6,macOS-26.5.2-arm64-arm-64bit,arm64,arm,8,17179869184
+rows_30000000,30000000,7.154,6.975,7.436,1133.94,14985000000,14985000000,True,10,1.4.5,3.9.6,macOS-26.5.2-arm64-arm-64bit,arm64,arm,8,17179869184
+rows_100000000,100000000,27.41,25.939,32.943,4257.673,49950000000,49950000000,True,10,1.4.5,3.9.6,macOS-26.5.2-arm64-arm-64bit,arm64,arm,8,17179869184
